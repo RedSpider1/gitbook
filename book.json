@@ -1,0 +1,13 @@
+{
+    "title": "一杯咖啡醉",
+    "author": "RedSpider社区",
+    "language": "zh-hans",
+    "styles": {
+        "website": "styles/common.css",
+        "ebook": "styles/common.css",
+        "pdf": "styles/common.css",
+        "mobi": "styles/common.css",
+        "epub": "styles/common.css"
+    },
+    "showLevel": false
+}
