@@ -8,6 +8,5 @@
         "pdf": "styles/common.css",
         "mobi": "styles/common.css",
         "epub": "styles/common.css"
-    },
-    "showLevel": false
+    }
 }
