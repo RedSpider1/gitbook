@@ -24,7 +24,7 @@
     list-style-image: linear-gradient(to right bottom, rgb(0, 188, 212), rgb(63, 81, 181));
 }
 .markdown-section>ul>li>ul>li {
-    list-style-image: linear-gradient(to right bottom, rgb(209, 146, 28), deeppink);
+    list-style-image: linear-gradient(to right bottom, rgb(209, 146, 28), rgb(192, 20, 112));
 }
 .markdown-section>ul>li>ul>li>ul>li {
     list-style: disc;
