@@ -4,6 +4,10 @@
 .page-wrapper {
     text-align: justify;
 }
+.markdown-section img {
+  border-radius: 10px;
+  box-shadow: rgb(102, 102, 102) 0px 0px 5px;
+}
 .markdown-section h1 {
     font-size: 20px !important;
     padding: 8px 15px;
