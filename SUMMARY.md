@@ -2,6 +2,7 @@
 
 * [简介](README.md)
 * [微信公众号]()
+	* [模板](wechat/others/微信公众号模板.md)
 	* [LeetCode]()
 		* [【LeetCode】- 13 - 罗马数字转整数](wechat/2018/09/13 - 罗马数字转整数.md)
 	* [Java基础]()
