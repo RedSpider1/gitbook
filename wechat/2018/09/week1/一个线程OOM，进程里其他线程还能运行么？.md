@@ -25,7 +25,7 @@
 
 方式：以1M为单位循环分配。
 ```java
- public static void main(String[] arg0){
+public static void main(String[] arg0){
     List<byte[]> myList=new ArrayList<>();
     int i=1;
     while(true){
@@ -35,7 +35,7 @@
         System.out.println("第"+i+"次分配完成");
         i++;
     }
- }
+}
 ```
 部分的输出结果：
 ```java
@@ -61,27 +61,20 @@ public class Test {
         count++;
         System.out.println("第"+count+"次执行recursion");
         recursion();
-
     }
     public static void main(String[] arg0){
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                Test t =new Test();
-                t.recursion();
-            }
+        new Thread( () -> {
+            Test t =new Test();
+            t.recursion();
         },"thread1").start();
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                while(true){
-                    try {
-                        Thread.sleep(5);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                    System.out.println(new Date().toString()+Thread.currentThread()+"==");
+        new Thread( () -> {
+            while(true){
+                try {
+                    Thread.sleep(5);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
                 }
+                System.out.println(new Date().toString()+Thread.currentThread()+"==");
             }
         },"thread2").start();
     }
@@ -134,35 +127,29 @@ Tue Sep 25 15:54:55 CST 2018Thread[thread2,5,main]==
 
 ```java
 public static void main(String[] arg0){
-    new Thread(new Runnable() {
-        @Override
-        public void run() {
-            List<byte[]> myList=new ArrayList<>();
-            int i=1;
-            while(true){
-                System.out.println(new Date().toString()+Thread.currentThread()+"==第"+i+"次分配");
-                byte[] bytes = new  byte[1024 * 1024 *1];
-                i++;
-                myList.add(bytes);
-                try {
-                    Thread.sleep(1000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+    new Thread( () -> {
+        List<byte[]> myList=new ArrayList<>();
+        int i=1;
+        while(true){
+            System.out.println(new Date().toString()+Thread.currentThread()+"==第"+i+"次分配");
+            byte[] bytes = new  byte[1024 * 1024 *1];
+            i++;
+            myList.add(bytes);
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
         }
     },"thread1").start();
 
-    new Thread(new Runnable(){
-        @Override
-        public void run() {
-            while(true){
-            System.out.println(new Date().toString() + Thread.currentThread() + "==");
-                try {
-                    Thread.sleep(1000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+    new Thread( () -> {
+        while(true){
+        System.out.println(new Date().toString() + Thread.currentThread() + "==");
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
         }
     },"thread2").start();
@@ -267,9 +254,9 @@ Exception in thread "thread1" java.lang.OutOfMemoryError: Java heap space
 2. 第一次OOM之后，线程2不再执行，而线程1继续执行，执行到第18次分配时，发生了OOM，这个数字也刚好对应实验1。
 
 # 结论
-一个线程OOM，会马上进行一次GC，然后把发生OOM的线程占用的空间清除，进程里其他线程还能运行。
+一个线程OOM，会马上进行一次GC，然后把发生OOM的线程占用的空间清除，**进程里其他线程还能运行**。
 # 说明
-有的粉丝认为，error是指的是严重的错误，一旦发生了error,那么JVM将会立即停止运行的程序。在这篇文章的demo中可以看到，并不是所有的error都会导致JVM崩溃，相反，现代JVM还能够很好地优化一些error。
+有的粉丝认为，`Error`是指的是严重的错误，一旦发生了Error,那么JVM将会立即停止运行的程序。在这篇文章的demo中可以看到，并不是所有的Error都会导致JVM崩溃，相反，现代JVM还能够很好地优化一些Error。
 # 参考文献
 https://www.jianshu.com/p/e26ef4429612
 

@@ -8,11 +8,14 @@
   border-radius: 10px;
   box-shadow: rgb(102, 102, 102) 0px 0px 5px;
 }
-.markdown-section *{
+.markdown-section p{
   font-size: 16px;
 }
 .markdown-section ul, .markdown-section ol{
   font-size: 16px !important;
+}
+.markdown-section code{
+  font-size: 12px !important;
 }
 .markdown-section h1 {
     font-size: 20px !important;
