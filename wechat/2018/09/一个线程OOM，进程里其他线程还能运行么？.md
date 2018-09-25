@@ -13,27 +13,28 @@
 ### 实验环境
 * jdk1.8
 * jvm参数配置
-    ```java
-    -Xms20m
-    -Xmx20m
-    -XX:+HeapDumpOnOutOfMemoryError
-    -ea
-    ```
+
+```java
+-Xms20m
+-Xmx20m
+-XX:+HeapDumpOnOutOfMemoryError
+-ea
+```
 ### 实验1
 目的：单个线程的可用内存空间是多大。
 
 方式：以1M为单位循环分配。
 ```java
  public static void main(String[] arg0){
-        List<byte[]> myList=new ArrayList<>();
-        int i=1;
-        while(true){
-            System.out.println("正在进行第"+i+"次分配");
-            byte[] arrayByte=new byte[1024*1024*1];//申请1M的空间
-            myList.add(arrayByte);//强引用，不会被JVM回收
-            System.out.println("第"+i+"次分配完成");
-            i++;
-        }
+    List<byte[]> myList=new ArrayList<>();
+    int i=1;
+    while(true){
+        System.out.println("正在进行第"+i+"次分配");
+        byte[] arrayByte=new byte[1024*1024*1];//申请1M的空间
+        myList.add(arrayByte);//强引用，不会被JVM回收
+        System.out.println("第"+i+"次分配完成");
+        i++;
+    }
  }
 ```
 部分的输出结果：
@@ -133,39 +134,39 @@ Tue Sep 25 15:54:55 CST 2018Thread[thread2,5,main]==
 
 ```java
 public static void main(String[] arg0){
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                List<byte[]> myList=new ArrayList<>();
-                int i=1;
-                while(true){
-                    System.out.println(new Date().toString()+Thread.currentThread()+"==第"+i+"次分配");
-                    byte[] bytes = new  byte[1024 * 1024 *1];
-                    i++;
-                    myList.add(bytes);
-                    try {
-                        Thread.sleep(1000);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
+    new Thread(new Runnable() {
+        @Override
+        public void run() {
+            List<byte[]> myList=new ArrayList<>();
+            int i=1;
+            while(true){
+                System.out.println(new Date().toString()+Thread.currentThread()+"==第"+i+"次分配");
+                byte[] bytes = new  byte[1024 * 1024 *1];
+                i++;
+                myList.add(bytes);
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
                 }
             }
-        },"thread1").start();
+        }
+    },"thread1").start();
 
-        new Thread(new Runnable(){
-            @Override
-            public void run() {
-                while(true){
-                System.out.println(new Date().toString() + Thread.currentThread() + "==");
-                    try {
-                        Thread.sleep(1000);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
+    new Thread(new Runnable(){
+        @Override
+        public void run() {
+            while(true){
+            System.out.println(new Date().toString() + Thread.currentThread() + "==");
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
                 }
             }
-        },"thread2").start();
-    }
+        }
+    },"thread2").start();
+}
 ```
 部分的输出结果：
 ```java
