@@ -9,6 +9,7 @@
 	* [Java基础]()
 		* [设计模式之观察者模式](wechat/2018/09/week1/设计模式之观察者模式.md)
 		* [一个线程OOM，进程里其他线程还能运行么？](wechat/2018/09/week1/一个线程OOM，进程里其他线程还能运行么？.md)
+		* [如何善用Java异常](wechat/2018/09/week2/如何善用Java异常.md)
 	* [设计模式]()
 		* [JDK与RxJava提供的观察者模式](wechat/2018/09/week1/JDK与RxJava提供的观察者模式.md)
 	* [项目实战]()
