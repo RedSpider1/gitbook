@@ -11,10 +11,10 @@
 .markdown-section p{
   font-size: 16px;
 }
-.markdown-section ul, .markdown-section ol{
+.markdown-section li{
   font-size: 16px !important;
 }
-.markdown-section code{
+.markdown-section pre>code{
   font-size: 12px !important;
 }
 .markdown-section h1 {
@@ -36,6 +36,7 @@
     border-radius: 16px;
     box-shadow: rgb(102, 102, 102) 1px 2px 1px;
     background-color: lightgoldenrodyellow;
+    overflow: auto;
 }
 .markdown-section p code, .markdown-section ul code{
     background-image: linear-gradient(to right bottom, rgb(240, 87, 202), rgb(156, 22, 29));
