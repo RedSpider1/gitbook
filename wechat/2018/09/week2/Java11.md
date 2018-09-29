@@ -72,4 +72,33 @@ java -classpath /home/foo/java Hello RedSpider
 #### java.lang.String
 String添加了几个常用的用于处理字符串的API
 - boolean isBlank(): 如果字符串是null或者是""，返回true，否则返回false
-- 
+- Stream lines()：返回这个字符串的函数。分隔符默认为"\"
+- String repeat(int)：返回原字符串重复几次的新字符串。比如"ab".repeat(3)，返回"ababab"。
+- String strip(): 去掉头尾的空白符，返回一个新的字符串
+- String stripLeading(): 去掉头部的空白符
+- String stripTrainling(): 去掉尾部的空白符
+
+你可能会问，`strip()`和`trim()`用什么区别？一句话，`strip()`是`trim()`用于支持Unicode的进化版。详情查看：[Difference between String trim() and strip() methods in Java 11](https://stackoverflow.com/questions/51266582/difference-between-string-trim-and-strip-methods-in-java-11)。
+
+#### StringBuilder和StringBuffer
+这两个类都新加了一个`compareTo()`方法，这个方法和`java.lang.CharSequence`新增的`int compare(CharSequence, CharSequence)`方法类似。两个`CharSequence`从第一个字符开始比较每个字符，然后返回一个int值。
+
+## java.lang.Thread
+移除了两个臭名昭著的方法：`destroy()`和`stop(Throwable)`。撒花，庆祝...
+
+## 其它
+还有IO、java.security、Optional等有一些更新。具体可以查看参考文章。
+
+# 新的GC
+## ZGC
+这绝对是让你的企业升级到Java 11的最大动力！ZGC是一款号称可以保证每次GC的停顿时间不超过10MS的垃圾回收器，并且和当前的默认垃圾回收起G1相比，吞吐量下降不超过15%。
+
+请注意关键词，“不超过”，“10ms”。我只能说，Amazing！
+
+后续本公众号会出一篇GC方面的文章，到时候会详细介绍ZGC。
+
+## Epsilon
+Java 11还加入了一个比较特殊的垃圾回收器——Epsilon，该垃圾收集器被称为“no-op”收集器，将会处理内存分配而不做任何实际的内存回收。 也就是说，这是一款不做垃圾回收的垃圾回收器。这个垃圾回收器看起来并没什么用，主要可以用来进行性能测试、内存压力测试等，Epsilon GC可以作为度量其他垃圾回收器性能的对照组。Epsilon GC至少能够帮助理解GC的接口，有助于成就一个更加模块化的JVM。
+
+# 参考文章
+[90 New Features and APIs in JDK 11 (Part 1)](https://dzone.com/articles/90-new-features-and-apis-in-jdk-11)
