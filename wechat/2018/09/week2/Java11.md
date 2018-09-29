@@ -2,7 +2,7 @@
 
 上一个LTS的版本是Java 8，Java 8将会支持到2025年。而且Java 8是一个改动较大的版本，相比于Java 7增加了很多新特性。所以很多企业目前使用的Java版本都是Java 8。
 
-而Java 11作为下一个LTS版本，是绝对值得学习和尝试使用的。那Java1 1相对与Java8有哪些主要的改动呢？
+而Java 11作为下一个LTS版本，是绝对值得学习和尝试使用的。那Java 11相对与Java8有哪些主要的改动呢？
 
 # 本地变量推断
 使用`var`关键字来声明变量，编译器会自动推断类型。这是Java 10带来的特性比如：
@@ -81,7 +81,7 @@ String添加了几个常用的用于处理字符串的API
 你可能会问，`strip()`和`trim()`用什么区别？一句话，`strip()`是`trim()`用于支持Unicode的进化版。详情查看：[Difference between String trim() and strip() methods in Java 11](https://stackoverflow.com/questions/51266582/difference-between-string-trim-and-strip-methods-in-java-11)。
 
 #### StringBuilder和StringBuffer
-这两个类都新加了一个`compareTo()`方法，这个方法和`java.lang.CharSequence`新增的`int compare(CharSequence, CharSequence)`方法类似。两个`CharSequence`从第一个字符开始比较每个字符，然后返回一个int值。
+这两个类都新加了一个`compareTo()`方法，这个方法和**CharSequence**类新增的**int compare(CharSequence, CharSequence)**方法类似。两个CharSequence从第一个字符开始比较每个字符，然后返回一个int值。
 
 ## java.lang.Thread
 移除了两个臭名昭著的方法：`destroy()`和`stop(Throwable)`。撒花，庆祝...
