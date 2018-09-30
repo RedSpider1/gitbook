@@ -17,7 +17,7 @@ var redSpider = "RedSpider"；
 
 `var`只是一个语法糖，如果你查看上述代码编译而成的字节码，会发现它们是一模一样的。`var`关键字会被Java编译器编译为String。
 
-而Java 11对`var`进行了增强，使它能够用在lambda表达式的局部变量声明中。
+而Java 11对`var`进行了增强，使它能够用在[lambda表达式](https://www.cnblogs.com/aoeiuv/p/5911692.html)的局部变量声明中。
 ```java
 list.stream()
     .map((var s) -> s.toLowerCase())
